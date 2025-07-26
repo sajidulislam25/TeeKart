@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TeeKart - Premium T-Shirts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+      color: #333;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    nav {
+      background: #222;
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      padding: 1rem;
+      gap: 1rem;
+      scroll-snap-type: x mandatory;
+    }
+
+    .slider img {
+      height: 200px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      border-radius: 10px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .product {
+      background: white;
+      border-radius: 15px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .btn {
+      margin-top: 1rem;
+      padding: 0.6rem 1rem;
+      background: #000;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      background: #222;
+      color: white;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to TeeKart</h1>
+    <p>Premium T-Shirts for Everyone</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#cart">My Cart</a>
+    <a href="#track">Track Order</a>
+  </nav>
+
+  <section class="slider">
+    <img src="https://via.placeholder.com/400x200?text=Banner+1" alt="Banner 1">
+    <img src="https://via.placeholder.com/400x200?text=Banner+2" alt="Banner 2">
+    <img src="https://via.placeholder.com/400x200?text=Banner+3" alt="Banner 3">
+  </section>
+
+  <section class="products" id="shop">
+    <div class="product">
+      <img src="https://via.placeholder.com/300x200?text=T-shirt+1" alt="T-shirt 1">
+      <h3>Black Cotton Tee</h3>
+      <p>₹499</p>
+      <button class="btn" onclick="orderNow('Black Cotton Tee', 499)">Order Now</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/300x200?text=T-shirt+2" alt="T-shirt 2">
+      <h3>White Printed Tee</h3>
+      <p>₹599</p>
+      <button class="btn" onclick="orderNow('White Printed Tee', 599)">Order Now</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/300x200?text=T-shirt+3" alt="T-shirt 3">
+      <h3>Blue Round Neck</h3>
+      <p>₹549</p>
+      <button class="btn" onclick="orderNow('Blue Round Neck', 549)">Order Now</button>
+    </div>
+  </section>
+
+  <div class="footer">
+    <p>Contact us on WhatsApp: <a href="https://wa.me/916003612799" style="color:#0f0">+91 6003612799</a></p>
+    <p>&copy; 2025 TeeKart</p>
+  </div>
+
+  <script>
+    function orderNow(product, price) {
+      const message = `Hi! I want to order:\nProduct: ${product}\nPrice: ₹${price}`;
+      const phone = "916003612799";
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    }
+  </script>
+</body>
+
+</html>
