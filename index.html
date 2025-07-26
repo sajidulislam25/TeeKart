@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TeeKart - Online T-shirt Store</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 🔷 Header -->
+  <header>
+    <div class="logo">TeeKart</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#cart">My Cart</a>
+      <a href="#track">Track Order</a>
+    </nav>
+  </header>
+
+  <!-- 🎯 Banner Slider -->
+  <section class="banner">
+    <h1>Welcome to TeeKart</h1>
+    <p>Best T-Shirts, Hoodies & More!</p>
+  </section>
+
+  <!-- 🛍️ Product Section -->
+  <section id="shop">
+    <h2>Shop Now</h2>
+    <div class="product-grid" id="product-list"></div>
+  </section>
+
+  <!-- 🛒 Cart Section -->
+  <section id="cart">
+    <h2>My Cart</h2>
+    <div id="cart-items"></div>
+    <p>Total: ₹<span id="total-price">0</span></p>
+  </section>
+
+  <!-- 🔍 Track Order -->
+  <section id="track">
+    <h2>Track Order</h2>
+    <input type="text" id="orderId" placeholder="Enter Order ID">
+    <button onclick="trackOrder()">Track via WhatsApp</button>
+  </section>
+
+  <!-- 📞 Login -->
+  <section id="login">
+    <h2>Login</h2>
+    <input type="text" id="phone" placeholder="Enter Mobile Number" />
+    <input type="text" id="otp" placeholder="Enter OTP (1234)" />
+    <button onclick="verifyOTP()">Login</button>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 TeeKart. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
