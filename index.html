@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TeeKart - Flipkart Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {font-family: Arial, sans-serif; background: #f0f2f5;}
+    header {background: #1976d2; padding: 15px; color: white; text-align: center; font-size: 24px;}
+    .products {display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px;}
+    .product-card {background: white; padding: 10px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center;}
+    .product-card img {width: 100%; height: 150px; object-fit: cover; border-radius: 8px;}
+    .product-card h3 {font-size: 16px; margin: 10px 0 5px;}
+    .product-card p {font-size: 14px; color: #444; margin-bottom: 10px;}
+    .product-card button {margin: 4px; padding: 6px 10px; font-size: 13px; border: none; border-radius: 6px; cursor: pointer;}
+    .add-btn {background: #1976d2; color: white;}
+    .shop-btn {background: #00c853; color: white;}
+    .bottom-nav {position: fixed; bottom: 0; width: 100%; background: #fff; display: flex; justify-content: space-around; border-top: 1px solid #ccc;}
+    .bottom-nav button {flex: 1; padding: 10px; background: none; border: none; font-size: 14px; color: #1976d2; cursor: pointer;}
+    .section {display: none; padding-bottom: 60px;}
+    .active {display: block;}
+    .cart, .orders, .checkout, .profile {padding: 15px;}
+    .form-group {margin-bottom: 10px;}
+    .form-group input, .form-group textarea {width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc;}
+    .submit-btn {background: #1976d2; color: white; width: 100%; padding: 10px; border: none; border-radius: 6px; margin-top: 10px; font-size: 16px;}
+  </style>
+</head>
+<body>
+  <header>TeeKart</header>  <div id="home" class="section active">
+    <div class="products" id="product-list"></div>
+  </div>  <div id="cart" class="section cart">
+    <h3>Your Cart</h3>
+    <div id="cart-items"></div>
+  </div>  <div id="checkout" class="section checkout">
+    <h3>Checkout</h3>
+    <div class="form-group"><input type="text" id="name" placeholder="Full Name" /></div>
+    <div class="form-group"><input type="text" id="phone" placeholder="Mobile Number" /></div>
+    <div class="form-group"><textarea id="address" rows="3" placeholder="Delivery Address"></textarea></div>
+    <button class="submit-btn" onclick="placeOrder()">Place Order via WhatsApp</button>
+  </div>  <div id="orders" class="section orders">
+    <h3>My Orders</h3>
+    <div id="orders-list">No past orders.</div>
+  </div>  <div id="profile" class="section profile">
+    <h3>Login with OTP</h3>
+    <div class="form-group"><input type="text" placeholder="Enter Mobile Number" /></div>
+    <button class="submit-btn">Get OTP</button>
+  </div>  <div class="bottom-nav">
+    <button onclick="navigate('home')"><i class="fas fa-home"></i><br>Home</button>
+    <button onclick="navigate('cart')"><i class="fas fa-shopping-cart"></i><br>My Cart</button>
+    <button onclick="navigate('checkout')"><i class="fas fa-bag-shopping"></i><br>Checkout</button>
+    <button onclick="navigate('orders')"><i class="fas fa-box"></i><br>My Orders</button>
+    <button onclick="navigate('profile')"><i class="fas fa-user"></i><br>Profile</button>
+  </div>  <script>
+    const products = [
+      {id: 1, name: "Classic T-Shirt", price: 399, img: "https://i.ibb.co/HC9yPwX/tshirt1.jpg"},
+      {id: 2, name: "Hoodie Black", price: 799, img: "https://i.ibb.co/hZRT5jj/hoodie1.jpg"},
+      {id: 3, name: "Slim Fit Jeans", price: 999, img: "https://i.ibb.co/hd1t5nk/jeans1.jpg"},
+      {id: 4, name: "Printed T-Shirt", price: 449, img: "https://i.ibb.co/qCWGzKM/tshirt2.jpg"},
+      {id: 5, name: "Zipper Hoodie", price: 899, img: "https://i.ibb.co/n6LjMR7/hoodie2.jpg"},
+      {id: 6, name: "Denim Jeans", price: 1099, img: "https://i.ibb.co/mRkD2cc/jeans2.jpg"},
+    ];
+
+    const cart = [];
+
+    function renderProducts() {
+      const list = document.getElementById("product-list");
+      list.innerHTML = products.map(p => `
+        <div class="product-card">
+          <img src="${p.img}" alt="${p.name}" />
+          <h3>${p.name}</h3>
+          <p>₹${p.price}</p>
+          <button class="add-btn" onclick="addToCart(${p.id})">Add to Cart</button>
+          <button class="shop-btn" onclick="checkoutNow(${p.id})">Shop Now</button>
+        </div>
+      `).join('');
+    }
+
+    function addToCart(id) {
+      const item = products.find(p => p.id === id);
+      cart.push(item);
+      alert(item.name + " added to cart");
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartArea = document.getElementById("cart-items");
+      if (cart.length === 0) return cartArea.innerHTML = "Cart is empty.";
+      cartArea.innerHTML = cart.map(c => `<p>${c.name} - ₹${c.price}</p>`).join('');
+    }
+
+    function checkoutNow(id) {
+      const item = products.find(p => p.id === id);
+      cart.push(item);
+      navigate('checkout');
+    }
+
+    function placeOrder() {
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const address = document.getElementById('address').value;
+      const orderID = Math.floor(100000 + Math.random() * 900000);
+      const items = cart.map(c => c.name + ' (₹' + c.price + ')').join(', ');
+
+      const msg = `Order ID: ${orderID}%0aName: ${name}%0aPhone: ${phone}%0aAddress: ${address}%0aItems: ${items}`;
+      window.open(`https://wa.me/916003612799?text=${msg}`);
+
+      document.getElementById("orders-list").innerHTML += `<p>Order ${orderID} placed for ${items}</p>`;
+      cart.length = 0;
+      renderCart();
+      navigate('orders');
+    }
+
+    function navigate(section) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(section).classList.add('active');
+    }
+
+    renderProducts();
+  </script></body>
+</html>
