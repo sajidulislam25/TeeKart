@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TeeKart - Premium T-Shirts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: #f7f7f7;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(45deg, #000, #444);
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5em;
+      animation: fadeInDown 1s ease;
+    }
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      margin: 20px auto;
+      max-width: 100%;
+    }
+    .slider img {
+      height: 300px;
+      margin-right: 10px;
+      scroll-snap-align: start;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .slider img:hover {
+      transform: scale(1.05);
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      animation: fadeInUp 1s ease;
+    }
+    .product {
+      background: #fff;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .product img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .product h3 {
+      margin: 10px 0;
+    }
+    .product button {
+      background: #000;
+      color: #fff;
+      padding: 8px 16px;
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .product button:hover {
+      background: #444;
+    }
+    footer {
+      text-align: center;
+      background: #000;
+      color: #fff;
+      padding: 10px;
+      margin-top: 20px;
+    }
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to TeeKart</h1>
+    <p>Trendy T-Shirts for Everyone</p>
+  </header>  <div class="slider">
+    <img src="https://via.placeholder.com/400x300/000000/ffffff?text=Tee+1" alt="Banner 1">
+    <img src="https://via.placeholder.com/400x300/111111/ffffff?text=Tee+2" alt="Banner 2">
+    <img src="https://via.placeholder.com/400x300/222222/ffffff?text=Tee+3" alt="Banner 3">
+  </div>  <div class="products">
+    <div class="product">
+      <img src="https://via.placeholder.com/300x300?text=Men+Tee+1" alt="T-shirt 1">
+      <h3>Black Cotton Tee</h3>
+      <p>₹499</p>
+      <button onclick="orderNow('Black Cotton Tee')">Order Now</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/300x300?text=Men+Tee+2" alt="T-shirt 2">
+      <h3>White Printed Tee</h3>
+      <p>₹599</p>
+      <button onclick="orderNow('White Printed Tee')">Order Now</button>
+    </div>
+    <div class="product">
+      <img src="https://via.placeholder.com/300x300?text=Men+Tee+3" alt="T-shirt 3">
+      <h3>Blue Round Neck</h3>
+      <p>₹549</p>
+      <button onclick="orderNow('Blue Round Neck')">Order Now</button>
+    </div>
+  </div>  <footer>
+    <p>Contact us on WhatsApp: <a href="https://wa.me/916003612799" style="color: #fff; text-decoration: underline;">6003612799</a></p>
+    <p>Payment: UPI or Cash on Delivery</p>
+    <p>&copy; 2025 TeeKart</p>
+  </footer>  <script>
+    function orderNow(product) {
+      const phone = '916003612799';
+      const message = encodeURIComponent(`Hi, I want to order: ${product}`);
+      window.location.href = `https://wa.me/${phone}?text=${message}`;
+    }
+  </script></body>
+</html>
