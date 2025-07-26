@@ -1,0 +1,117 @@
+<!-- index.html --><!DOCTYPE html><html>
+<head>
+  <title>TeeKart - Home</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header>
+    <h1>TeeKart</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">My Cart</a>
+      <a href="track.html">Track Order</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+  <main>
+    <h2>Welcome to TeeKart</h2>
+    <img src="images/banner.jpg" alt="Banner" width="100%">
+    <a href="shop.html"><button>Shop Now</button></a>
+  </main>
+</body>
+</html><!-- shop.html --><!DOCTYPE html><html>
+<head>
+  <title>Shop - TeeKart</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="scripts/app.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Shop</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">My Cart</a>
+      <a href="track.html">Track Order</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+  <main>
+    <div class="product-grid">
+      <!-- Repeat the block below for 50 products -->
+      <div class="product-card" data-category="T-Shirt">
+        <img src="images/products/tshirt1.jpg" alt="T-Shirt 1">
+        <h3>T-Shirt 1</h3>
+        <p>₹299</p>
+        <button onclick="addToCart('T-Shirt 1', 299)">Add to Cart</button>
+        <a href="https://wa.me/916003612799?text=I%20want%20to%20order%20T-Shirt%201%20for%20₹299" target="_blank">
+          <button>Order Now</button>
+        </a>
+      </div>
+      <!-- Repeat above div with new image/name/price -->
+    </div>
+  </main>
+</body>
+</html><!-- cart.html --><!DOCTYPE html><html>
+<head>
+  <title>My Cart</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="scripts/app.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>My Cart</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="cart.html">My Cart</a>
+      <a href="track.html">Track Order</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+  <main>
+    <div id="cart-container">
+      <!-- JS will populate this -->
+    </div>
+  </main>
+</body>
+</html><!-- track.html --><!DOCTYPE html><html>
+<head>
+  <title>Track Order</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header>
+    <h1>Track Order</h1>
+  </header>
+  <main>
+    <p>Enter your Order ID to track:</p>
+    <input type="text" id="orderId" placeholder="e.g., ORDER12345">
+    <a id="trackLink" target="_blank"><button onclick="trackOrder()">Track on WhatsApp</button></a>
+  </main>
+  <script>
+    function trackOrder() {
+      const id = document.getElementById('orderId').value;
+      const link = `https://wa.me/916003612799?text=My%20order%20ID%20is%20${id}`;
+      document.getElementById('trackLink').href = link;
+    }
+  </script>
+</body>
+</html><!-- login.html --><!DOCTYPE html><html>
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header>
+    <h1>Login / Sign Up</h1>
+  </header>
+  <main>
+    <input type="text" placeholder="Enter mobile number">
+    <button>Send OTP</button>
+    <p>(Demo only, no SMS sent)</p>
+  </main>
+</body>
+</html><!-- styles/style.css -->body { font-family: sans-serif; background: #e6f0ff; margin: 0; padding: 0; } header { background: #007bff; color: white; padding: 10px; } nav a { color: white; margin-right: 15px; text-decoration: none; } .product-grid { display: flex; flex-wrap: wrap; gap: 10px; padding: 10px; } .product-card { background: white; border: 1px solid #ccc; padding: 10px; width
+
